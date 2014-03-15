@@ -1,16 +1,16 @@
 /**
-@file
-BBG2 Spring 2014 Assignment #1
-A program that cracks a given password using a bruteforce attack.
-It prints cracked password and amount of attempts to find it.
-@author
-Name: H. Tuğkan Kibar
-Student no: 13011064
-Date: 15/03/2014
-E-Mail: htugkankibar@gmail.com
-Compiler used: GCC
-IDE: Code::Blocks
-Operating System: Elementary OS Luna (0.2)
+    @file
+    BBG2 Spring 2014 Assignment #1
+    A program that cracks a given password using a bruteforce attack.
+    It prints cracked password and amount of attempts to find it.
+    @author
+    Name: H. Tuğkan Kibar
+    Student no: 13011064
+    Date: 15/03/2014
+    E-Mail: htugkankibar@gmail.com
+    Compiler used: GCC
+    IDE: Code::Blocks
+    Operating System: Elementary OS Luna (0.2)
 */
 
 #include <stdio.h>
