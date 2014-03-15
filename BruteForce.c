@@ -1,6 +1,6 @@
 /**
 @file
-BBG2 (BLM1552) Spring 2014 Assignment #1
+BBG2 Spring 2014 Assignment #1
 A program that cracks a given password using a bruteforce attack.
 It prints cracked password and amount of attempts to find it.
 @author
@@ -59,6 +59,7 @@ void bruteForce(int length, int position) {
     @return This function returns nothing.
 */
 void generateCharset (int level) {
+    //TODO: Find an able alternative for strlen() function that can handle multibyte characters and add turkish characters to charsets.
     switch (level) {
         case 1:
             strcpy(charset, "0123456789");
@@ -119,7 +120,7 @@ Digits, lowercase and uppercase chars(4)\n");
             scanf("%9s", password);
             control = 0;
             for (i = 0; i < length; i++) {
-                if (strchr(charset, password[i]) != '\0') {
+                if (strchr(charset, password[i]) != '\0') { //Checks if there are any unwanted characters.
                     control = 1;
                 };
             };
