@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 char charset[62];
 char password[8];
@@ -11,7 +12,7 @@ char passwordCandidate[8];
 void bruteForce(int length, int position) {
     if (position == length) {
         if (strcmp(password, passwordCandidate) == 0) {
-            printf("Crack complete.\nPassword: %s.\nAttempt count: %d\n %s", passwordCandidate, ++attemptCount);
+            printf("Crack complete.\nPassword: %s\nAttempt count: %ld\n", passwordCandidate, ++attemptCount);
             exit(0);
         } else {
             attemptCount++;
@@ -51,25 +52,25 @@ void generatePassword (int length) {
     };
 }
 
-void main (void) {
-    int level, length, who, control, i;
+int main (void) {
+    unsigned int level, length, who, control, i;
     srand((unsigned int) time(NULL));
     do {
         printf("Select difficulty level.\nDigits only(1)\nLowercase chars only(2)\nDigits and lowercase chars(3)\n\
 Digits, lowercase and uppercase chars(4)\n");
-        scanf("%d", &level);
+        scanf("%1ud", &level);
         printf("Length of the password? (4,6 or 8)\n");
-        scanf("%d", &length);
+        scanf("%1ud", &length);
         printf("User input(1) or randomly generated password(2)?\n");
-        scanf("%d", &control);
+        scanf("%1ud", &who);
     } while ((level > 5 || level < 1) || !(length == 4 || length == 6 || length == 8) || !(who == 1 || who == 2));
     generateCharset(level);
     if (who == 1) {
         do {
-            scanf("%s", &password);
+            scanf("%9s", password);
             control = 0;
             for (i = 0; i < length; i++) {
-                if (strchr(charset, password[i] != NULL)) {
+                if (strchr(charset, password[i]) != '\0') {
                     control = 1;
                 };
             };
@@ -77,6 +78,8 @@ Digits, lowercase and uppercase chars(4)\n");
     } else if (who == 2) {
     generatePassword(length);
     };
-    printf("Cracking...");
+    printf("Initial password is: %s\n", password);
+    printf("Cracking...\n");
     bruteForce(length, 0);
+    return 0;
 }
