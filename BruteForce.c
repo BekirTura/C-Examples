@@ -1,5 +1,5 @@
 /*
-Filename : bruteForce.c
+Filename : BruteForce.c
 Written by H. Tuğkan Kibar
 Written on Sat Mar 15, 3:08 PM
 
