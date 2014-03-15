@@ -105,11 +105,11 @@ int main (void) {
     do {
         printf("Select difficulty level.\nDigits only(1)\nLowercase chars only(2)\nDigits and lowercase chars(3)\n\
 Digits, lowercase and uppercase chars(4)\n");
-        scanf("%1ud", &level);
+        scanf("%u", &level);
         printf("Length of the password? (4,6 or 8)\n");
-        scanf("%1ud", &length);
+        scanf("%u", &length);
         printf("User input(1) or randomly generated password(2)?\n");
-        scanf("%1ud", &who);
+        scanf("%u", &who);
     } while ((level > 5 || level < 1) || !(length == 4 || length == 6 || length == 8) || !(who == 1 || who == 2));
     //Generate a charset of allowed characters.
     generateCharset(level);
@@ -117,14 +117,14 @@ Digits, lowercase and uppercase chars(4)\n");
     if (who == 1) {
         do {
             printf("Enter password to be cracked.\n");
-            scanf("%9s", password);
+            scanf("%s", password);
             control = 0;
             for (i = 0; i < length; i++) {
-                if (strchr(charset, password[i]) != '\0') { //Checks if there are any unwanted characters.
+                if (strchr(charset, password[i]) == NULL) { //Checks if there are any unwanted characters.
                     control = 1;
                 };
             };
-        } while (strlen(password) != length && control == 1);
+        } while ((strlen(password) != length) || (control == 1));
     } else if (who == 2) {
     generatePassword(length);
     };
