@@ -1,3 +1,12 @@
+/*
+Filename : bruteForce.c
+Written by H. Tuğkan Kibar
+Written on Sat Mar 15, 3:08 PM
+
+Cracks a randomly generated or manually input password.
+Uses a recursive brute force attack.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
