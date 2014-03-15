@@ -119,7 +119,7 @@ Digits, lowercase and uppercase chars(4)\n");
             scanf("%9s", password);
             control = 0;
             for (i = 0; i < length; i++) {
-                if (strchr(charset, password[i]) != '\0') { //Checks if there are any unwanted characters.
+                if (strchr(charset, password[i]) != '\0') {
                     control = 1;
                 };
             };
