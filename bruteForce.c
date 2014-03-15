@@ -10,6 +10,16 @@ long int attemptCount = 0;
 char passwordCandidate[8];
 
 void bruteForce(int length, int position) {
+    /**
+    Cracks password recursively.
+
+    Creates instances of itself to generate and test different password candidates.
+    When password and candidate matches, prints it out and terminates the program.
+
+    @param Length of the password.
+    @param Indicates which character slot of passwordCandidate variable is to be filled.
+    @return This function returns nothing.
+    */
     if (position == length) {
         if (strcmp(password, passwordCandidate) == 0) {
             printf("Crack complete.\nPassword: %s\nAttempt count: %ld\n", passwordCandidate, ++attemptCount);
@@ -20,6 +30,7 @@ void bruteForce(int length, int position) {
     } else {
         int i;
         for (i = 0; i < charsetLength; i++) {
+            //By calling itself again and again and changing the position every time generates passwords sequentially.
             passwordCandidate[position] = charset[i];
             bruteForce(length, position + 1);
         };
@@ -27,6 +38,12 @@ void bruteForce(int length, int position) {
 }
 
 void generateCharset (int level) {
+    /**
+    Generates a charset depending on the level.
+
+    @param Difficulty level of the password.
+    @return This function returns nothing.
+    */
     switch (level) {
         case 1:
             strcpy(charset, "0123456789");
@@ -45,6 +62,12 @@ void generateCharset (int level) {
 }
 
 void generatePassword (int length) {
+    /**
+    Generates a random password using charset that was set by generateCharset().
+
+    @param Length of the password.
+    @return This function returns nothing.
+    */
     int i, randomNumber;
     for (i = 0; i < length; i++) {
         randomNumber = rand() % charsetLength;
@@ -67,10 +90,11 @@ Digits, lowercase and uppercase chars(4)\n");
     generateCharset(level);
     if (who == 1) {
         do {
+            printf("Enter password to be cracked.\n");
             scanf("%9s", password);
             control = 0;
             for (i = 0; i < length; i++) {
-                if (strchr(charset, password[i]) != '\0') {
+                if (strchr(charset, password[i]) != '\0') { //Checks if there are any unwanted characters.
                     control = 1;
                 };
             };
