@@ -44,7 +44,7 @@ void bruteForce(int length, int position) {
             printf("Crack complete.\nPassword: %s\nAttempt count: %ld\n", passwordCandidate, ++attemptCount);
             end = clock();
             timeSpent = (double) (end - begin) / CLOCKS_PER_SEC;
-            printf("Time spent: %lf seconds.", timeSpent);
+            printf("Time spent: %lf seconds.\n", timeSpent);
             exit(0);
         } else {
             attemptCount++;
