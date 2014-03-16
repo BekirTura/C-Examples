@@ -13,8 +13,6 @@
     Operating System: Elementary OS Luna (0.2)
 */
 
-//TODO : ADD TIME COUNTER.
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
