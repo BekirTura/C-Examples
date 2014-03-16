@@ -13,6 +13,8 @@
     Operating System: Elementary OS Luna (0.2)
 */
 
+//TODO : ADD TIME COUNTER.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -23,6 +25,8 @@ char password[8];
 int charsetLength;
 long int attemptCount = 0;
 char passwordCandidate[8];
+clock_t begin, end; //Timer variables
+double timeSpent;
 
 /**
     Cracks password recursively.
@@ -38,6 +42,9 @@ void bruteForce(int length, int position) {
     if (position == length) {
         if (strcmp(password, passwordCandidate) == 0) {
             printf("Crack complete.\nPassword: %s\nAttempt count: %ld\n", passwordCandidate, ++attemptCount);
+            end = clock();
+            timeSpent = (double) (end - begin) / CLOCKS_PER_SEC;
+            printf("Time spent: %lf seconds.", timeSpent);
             exit(0);
         } else {
             attemptCount++;
@@ -130,6 +137,7 @@ Digits, lowercase and uppercase chars(4)\n");
     };
     printf("Initial password is: %s\n", password);
     printf("Cracking...\n");
+    begin = clock();
     //Crack the password.
     bruteForce(length, 0);
     return 0;
